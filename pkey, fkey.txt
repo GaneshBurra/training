@@ -1,0 +1,19 @@
+create table employees(employee_id number(6)
+constraint emp_employee_id PRIMARY KEY,
+first_name varchar2(20),
+last_name varchar2(25)
+constraint emp_last_name_nn NOT NULL,
+email varchar2(25)
+constraint emp_email_nn NOT NULL
+constraint emp_email_uk unique,
+phone_number varchar2(20),
+hire_date DATE
+constraint emp_hire_date_nn NOT NULL,
+job_id Varchar2(10),
+salary number(10)
+constraint emp_salary_ck check(salary > 10000),
+commision_pct number(2,2),
+manager_id number(6)
+constraint emp_manager_fk references employees(employee_id),
+depart_n number(4)
+constraint emp_dept_fk references dept(deptno));
